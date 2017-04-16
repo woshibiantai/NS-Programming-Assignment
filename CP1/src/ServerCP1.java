@@ -20,13 +20,15 @@ import java.util.Random;
  * Created by woshibiantai on 11/4/17.
  */
 
-public class CP1SecStore {
+public class ServerCP1 {
+    String privateKeyPath = "/Users/jonathanbeiqiyang/IdeaProjects/SecureFileTransferProject/CP1/src/privateServer.der";
+    String certificateCAPath = "/Users/jonathanbeiqiyang/IdeaProjects/SecureFileTransferProject/CP1/src/CA.crt";
+    String hashAlgo = "MD5";
 
     public static void main(String[] args) throws Exception {
-        String privateKeyPath = "/Users/woshibiantai/Downloads/term05/CSE/src/privateServer.der";
-        String hashAlgo = "MD5";
 
-        CP1SecStore secStore = new CP1SecStore();
+
+        ServerCP1 secStore = new ServerCP1();
 
         ServerSocket server = new ServerSocket(6789);
         System.out.println("Secure Store is now open!");
@@ -39,6 +41,12 @@ public class CP1SecStore {
     }
 
     private void ClientHandling(Socket client, String privateKeyPath, String hashAlgo) throws Exception {
+        /**
+         ************************************************************************************************
+         ********************************************AUTHENTICATION**************************************
+         ************************************************************************************************
+         */
+
         // Reading and sending bytes
         OutputStream byteOutput = client.getOutputStream();
         InputStream byteInput = client.getInputStream();
@@ -70,6 +78,16 @@ public class CP1SecStore {
         byteOutput.flush();
         System.out.println("Sent encrypted nonce hashed using " + hashAlgo + " to client!");
         System.out.println(Arrays.toString(encryptedNonce));
+
+        //Wait on the Client to send CA request
+        String CARequestLine = input.readLine();
+        if(CARequestLine.contains("CA")){
+            System.out.println("Client Requesting CA Certificate");
+
+            //Send CA Certificate to Client
+            File certificateCA = new File(certificateCAPath);
+            File 
+        }
     }
 
     private byte[] EncryptMessage(byte[] m, PrivateKey key, String hashAlgo) throws Exception {
@@ -95,45 +113,3 @@ public class CP1SecStore {
 
 }
 
-class CP1Client {
-    public static void main(String[] args) throws Exception {
-        CP1Client cp1Client = new CP1Client();
-        Socket client = new Socket("localhost", 6789);
-
-        // Reading and sending bytes
-        OutputStream byteOutput = client.getOutputStream();
-        InputStream byteInput = client.getInputStream();
-
-        // Reading and sending strings
-        PrintWriter output = new PrintWriter(byteOutput, true);
-        BufferedReader input = new BufferedReader(
-                new InputStreamReader(byteInput));
-
-        // Initial handshake with server
-        output.println("Hello SecStore, please prove your identity!");
-        String confirmation = input.readLine();
-        System.out.println("Server: " + confirmation); // "Hello, this is SecStore"
-
-        if (confirmation.equals("Hello, this is SecStore")) {
-            // Generate nonce!
-            byte[] nonce = new byte[256];
-            (SecureRandom.getInstanceStrong()).nextBytes(nonce);
-            System.out.println(nonce.length);
-
-            // Send the FRESH nonce to the server
-            output.println(nonce.length); // let server know nonce length
-            byteOutput.write(nonce);
-            byteOutput.flush();
-            System.out.println(Arrays.toString(nonce));
-            System.out.println("Sent unencrypted nonce to server");
-
-            // Read encrypted nonce from server
-            int encryptedLength = Integer.parseInt(input.readLine());
-            byte[] encryptedNonce = new byte[encryptedLength];
-            String hashAlgo = input.readLine();
-            int count = byteInput.read(encryptedNonce);
-            System.out.println("Server sent encrypted nonce hashed using "+ hashAlgo + ": " + Arrays.toString(encryptedNonce));
-        }
-    }
-
-}
