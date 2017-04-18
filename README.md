@@ -26,12 +26,11 @@ The performance for each program can be seen in [throughput-plot.pdf](https://gi
   1. Private key path
   2. Nonce hashing algorithm
   3. Signed certificate path
-  
-  e.g. `java ServerCP2 privateServer.der MD5 1001619.crt `
+   e.g. `java ServerCP2 privateServer.der MD5 1001619.crt`  
 5. The server's IP will be printed. Copy this for use in the client program.
 6. Run the client program with the arugments in the following order: 
   1. CA certificate path
   2. Path of the file to be transferred
   3. The server's IP that has been copied in step 5
-  e.g. `java ClientCP1 CA.crt sampleData/video.mp4 000.000.0.000`
+   e.g. `java ClientCP1 CA.crt sampleData/video.mp4 000.000.0.000`  
 7. Wait for the file to be transferred! Successful file transfer will save it in the root folder. 
