@@ -15,7 +15,7 @@ This protects our client from leaking their data to random entities including cr
 To demonstrate the difference in performance between symmetric and asymmetric encryption, we have written two programs CP-1 and CP-2.
 The first set ServerCP1 and ClientCP1 makes use of an asymmetric RSA encryption for both certificate and data encryption.
 The second set ServerCP2 and ClientCP2 makes use of a symmetric AES encryption for the data, and RSA encryption for the certificate.
-The performance for each program can be seen in [throughput-plot.pdf](https://github.com/woshibiantai/NS-Programming-Assignment/)
+The performance for each program can be seen in [throughput-plot.pdf](https://github.com/woshibiantai/NS-Programming-Assignment/blob/master/throughput-plots.pdf)
 
 
 
@@ -40,7 +40,7 @@ The client then decrypts the data to retrieve the server's message and verifies 
 a replay attack. 
 
 
-![alt text](https://github.com/woshibiantai/NS-Programming-Assignment/ "Replay attack example")
+![alt text](https://github.com/woshibiantai/NS-Programming-Assignment/blob/master/replayAttack.png "Replay attack example")
 
 
 The malicious server can then trick the honest client into believing that he/she has succesfully uploaded their data onto the server when the server has in fact not received anything.
