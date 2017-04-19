@@ -22,9 +22,9 @@ The performance for each program can be seen in [throughput-plot.pdf](https://gi
 1. Prepare your private key in your project folder, or use our privateServer.der
 2. Get your signed certificate from a Certificate Authority (CA) or use our 1001619.crt, and place it in your project folder, 
 3. Put the CA's certificate in your project folder, or use our CA.crt
-4. Run the server program first, with the arguments in the following order: Private key path, Nonce hashing algorithm, Signed certificate path
+4. Run the server program first, with the arguments in the following order: Private key path, Signed certificate path, Nonce hashing algorithm
 
-   e.g. `java ServerCP2 privateServer.der MD5 1001619.crt`  
+   e.g. `java ServerCP2 privateServer.der 1001619.crt MD5`  
 5. The server's IP will be printed. Copy this for use in the client program.
 6. Run the client program with the arugments in the following order: CA certificate path, Path of the file to be transferred, The server's IP that has been copied in step 5
   

@@ -30,12 +30,14 @@ public class ServerCP2 {
         System.out.println(">> Secure Store is now open!");
 
         while (true) {
-            try {
-                Socket client = server.accept();
-                secStore.ClientHandling(client, privateKeyPath, signedCertificatePath, hashAlgo);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            Socket client = server.accept();
+            exec.execute(() -> {
+                try {
+                    secStore.ClientHandling(client, privateKeyPath, signedCertificatePath, hashAlgo);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
         }
     }
 
