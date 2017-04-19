@@ -56,4 +56,13 @@ the client. Since the nonce is different for every session, the malicious server
 Since the data is transmitted in bytes, virtually any file type can be transferred. 
 
 #### Concurrency
-Multiply clients can upload different files to the server at one time. The server is able to handle the clients concurrently.
+Multiple clients can upload different files to the server at one time. The server is able to handle the clients concurrently.
+
+#### GUI 
+We have implemented JavaFX for the GUI component of our project. A simple interface which allows users to select whether they wish to act as the Client or Server, and the respective files they would like to use. (CA certificate, file to upload, etc...) 
+
+For the Server: Once the Server is selected and run, the GUI will display the IP Address (for the client to use to access it) and the current files that the server contains, which will be updated in real time to reflect any uploads or deletions. 
+
+For the Client: Once the Client is selected and run, the GUI will print a statement "uploading file...", which will be updated to "uploaded file!" once the file has been successfully received by the server. 
+
+To quit the GUI, simply press the Quit Application button. 
