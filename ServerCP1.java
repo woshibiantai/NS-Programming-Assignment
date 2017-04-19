@@ -10,14 +10,16 @@ import java.security.KeyFactory;
 import java.security.MessageDigest;
 import java.security.PrivateKey;
 import java.security.spec.PKCS8EncodedKeySpec;
-
-/**
- * Created by woshibiantai on 11/4/17.
- */
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class ServerCP1 {
 
     public static void main(String[] args) throws Exception {
+        ExecutorService exec = Executors.newCachedThreadPool();
+        String privateKeyPath = args[0];
+        String signedCertificatePath = args[1];
+        String hashAlgo = args[2];
 
         ServerCP1 secStore = new ServerCP1();
 
@@ -26,16 +28,18 @@ public class ServerCP1 {
         System.out.println(">> Secure Store is now open!");
 
         while (true) {
-            try {
-                Socket client = server.accept();
-                secStore.ClientHandling(client, args[0], args[1], args[2]); // privateKeyPath, hashAlgo, signedCertificatePath
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            Socket client = server.accept();
+            exec.execute(() -> {
+                try {
+                    secStore.ClientHandling(client, privateKeyPath, signedCertificatePath, hashAlgo); // privateKeyPath, hashAlgo, signedCertificatePath
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
         }
     }
 
-    private void ClientHandling(Socket client, String privateKeyPath, String hashAlgo, String signedCertificatePath) throws Exception {
+    private void ClientHandling(Socket client, String privateKeyPath, String signedCertificatePath, String hashAlgo) throws Exception {
         /**
          ************************************************************************************************
          ********************************************AUTHENTICATION**************************************
