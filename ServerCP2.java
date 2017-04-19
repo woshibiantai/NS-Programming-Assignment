@@ -12,17 +12,16 @@ import java.security.KeyFactory;
 import java.security.MessageDigest;
 import java.security.PrivateKey;
 import java.security.spec.PKCS8EncodedKeySpec;
-
-/**
- * Created by woshibiantai on 11/4/17.
- */
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class ServerCP2 {
 
     public static void main(String[] args) throws Exception {
+        ExecutorService exec = Executors.newCachedThreadPool();
         String privateKeyPath = args[0];
-        String hashAlgo = args[1];
-        String signedCertificatePath = args[2];
+        String signedCertificatePath = args[1];
+        String hashAlgo = args[2];
 
         ServerCP2 secStore = new ServerCP2();
 
