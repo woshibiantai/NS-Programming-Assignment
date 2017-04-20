@@ -54,6 +54,11 @@ To resolve this issue, the client sends a freshly generated nonce (SecureRandom 
 the client. Since the nonce is different for every session, the malicious server cannot save the transmitted information to trick the client in future sessions.
 
 
+
+### Protocol Specifications
+![alt text](https://github.com/woshibiantai/NS-Programming-Assignment/blob/master/CP1.png "CP-1")
+![alt text](https://github.com/woshibiantai/NS-Programming-Assignment/blob/master/CP2.png "CP-2")
+
 ### Bonus Functions
 #### File Types
 Since the data is transmitted in bytes, virtually any file type can be transferred. 
