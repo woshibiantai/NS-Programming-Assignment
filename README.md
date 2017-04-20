@@ -15,7 +15,7 @@ This protects our client from leaking their data to random entities including cr
 To demonstrate the difference in performance between symmetric and asymmetric encryption, we have written two programs CP-1 and CP-2.
 The first set ServerCP1 and ClientCP1 makes use of an asymmetric RSA encryption for both certificate and data encryption.
 The second set ServerCP2 and ClientCP2 makes use of a symmetric AES encryption for the data, and RSA encryption for the certificate.
-The performance for each program can be seen in [throughput-plot.pdf](https://github.com/woshibiantai/NS-Programming-Assignment/blob/master/throughput-plots.pdf)
+The performance for each program can be seen in ![alt-text](https://github.com/woshibiantai/NS-Programming-Assignment/blob/master/throughput.png "Throughput analysis")
 
 
 
