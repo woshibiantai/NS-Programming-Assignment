@@ -1,0 +1,29 @@
+.root{
+    -fx-background-color: #bdc3c7;
+
+    -fx-font-size: 11pt;
+
+    -fx-default-button: #34495e;
+
+    -fx-dark-text-color: black;
+    -fx-mid-text-color: #333;
+    -fx-light-text-color: white;
+
+}
+
+.label{
+    -fx-text-fill: #2c3e50;
+}
+
+.button{
+    -fx-background-color: #34495e;
+    -fx-text-fill: white;
+}
+
+.list-view .list-cell{
+    -fx-background-color: #2c3e50;
+    -fx-highlight-fill: #34495e;
+
+    -fx-text-fill: white;
+}
+

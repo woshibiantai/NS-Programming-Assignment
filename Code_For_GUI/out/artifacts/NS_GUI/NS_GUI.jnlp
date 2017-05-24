@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="NS_GUI.jnlp">
+  <information>
+    <title>Awesome Uploader</title>
+    <vendor>Unknown</vendor>
+    <description>NS_GUI</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="NS_GUI copy.jar" size="947074" download="eager" />
+    <jar href="NS_GUI.jar" size="1948693" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="600" height="400" main-class="sample.Main"  name="NS_GUI" />
+  <update check="background"/>
+</jnlp>
